@@ -9,22 +9,19 @@ import android.widget.Button
 import androidx.navigation.findNavController
 import com.example.secretmessage.R
 
-class WelcomeFragment : Fragment() {
+class MessageFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // fragment class doesn't have findViewById(), so you cannot directly use it
-        // but you can call it on fragments root view
-        val rootView = inflater.inflate(R.layout.fragment_welcome, container, false)
-        val startButton = rootView.findViewById<Button>(R.id.bt_start)
-
-        startButton.setOnClickListener {
-            // get a reference of navController
+        // Inflate the layout for this fragment
+        val rootView = inflater.inflate(R.layout.fragment_message, container, false)
+        val nextButton = rootView.findViewById<Button>(R.id.bt_next)
+        nextButton.setOnClickListener {
             val navController = rootView.findNavController()
-            navController.navigate(R.id.action_welcomeFragment_to_messageFragment)
+            navController.navigate(R.id.action_messageFragment_to_encryptFragment)
         }
-
         return rootView
     }
 }
